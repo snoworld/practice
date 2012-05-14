@@ -34,6 +34,9 @@ public class BinaryTree{
 		System.out.println("tree has value -1: "+has_value(root, -1));
 		System.out.println("tree has value 10: "+has_value(root, 10));
 		
+		System.out.println("root leaf path sum 14 exists: "+path_sum(root, 14));
+		System.out.println("root leaf path sum 28 exists: "+path_sum(root, 28));
+		
 		LinkedList<Node> in_order=get_in_order(root);
 		for(Node node : in_order){
 			System.out.print(node.value+" ");
@@ -58,6 +61,13 @@ public class BinaryTree{
 	
 	// return if the tree has a node with a specific value
 	private static boolean has_value(Node node, int value){
+		//TODO
+		return false;
+	}
+	
+	// return if there is a path from root to a leaf (a node without any child) and the sum equals the specific value
+	// kind of difficult...
+	private static boolean path_sum(Node node, int value){
 		//TODO
 		return false;
 	}
