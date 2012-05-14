@@ -2,7 +2,7 @@ import java.util.*;
 
 public class BinaryTree{
 	/*
-				3
+			    3
 			   / \
 			  11 -3
 			 / \   \
@@ -10,7 +10,7 @@ public class BinaryTree{
 			 \   \  /
 			 18  25 7
 			     /
-				-10
+			    -10
 	 */
 	private static Node build_binary_tree(){
 		Node root=new Node(3);
