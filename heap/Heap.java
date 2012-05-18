@@ -1,8 +1,10 @@
-/* works for int array */
+/* works for int array 
+ * data index starts from 1
+ */
 
 public class Heap {
 	
-	int length;
+	private int length;
 	
 	public Heap(int len){
 		length = len;
@@ -28,7 +30,6 @@ public class Heap {
 	public void maxHeapify(int[] arr, int i){
 		int l = getLeft(i);
 		int r = getRight(i);
-		System.out.println(l+" , "+r);
 		int max = i;
 		if (l < this.length && arr[l] > arr[max]){
 			max = l;
@@ -40,22 +41,60 @@ public class Heap {
 			int temp = arr[i];
 			arr[i] = arr[max];
 			arr[max]= temp;
-			//System.out.println(max);
-			maxHeapify(arr,max);
-			
+			maxHeapify(arr,max);			
 		}		
+	}
+	
+	public void buildMaxHeap(int[] arr){
+		int i;
+		for(i=(arr.length>>1);i>0;i--){
+			maxHeapify(arr,i);
+		}
+	}
+	
+	private void swap(int[] arr, int a, int b){
+		int temp;
+		temp = arr[a];
+		arr[a] = arr[b];
+		arr[b] = temp;
+	}	
+	
+	public void heapSort(int[] arr){
+		int i;
+		buildMaxHeap(arr);
+		for(i=arr.length-1;i>1;i--){	
+			swap(arr,i,1);
+			length--;
+			maxHeapify(arr,1);
+		}		
+	}
+	
+	public void printArray(int[] arr){
+		int i;
+		for(i=1;i<arr.length;i++){
+			System.out.print(arr[i]+" ");
+		}
 	}
 	
 	public static void main(String[] args){
 		int i=5;
-		int[] array = {16,4,10,14,7,9,3,2,8,1};
-		Heap h = new Heap(array.length);
-		System.out.println("getParent: "+ h.getParent(i));
-		System.out.println("getParent: "+ h.getLeft(i));
-		System.out.println("getParent: "+ h.getRight(i));
-		h.maxHeapify(array,1);
-		/*for(i=0;i<h.length;i++){
-			System.out.print(array[i]+" ");
-		}*/
+		int[] arr1 = {0,16,4,10,14,7,9,3,2,8,1};
+		Heap h1 = new Heap(arr1.length);
+		System.out.println("getParent: "+ h1.getParent(i));
+		System.out.println("getLeft: "+ h1.getLeft(i));
+		System.out.println("getRight: "+ h1.getRight(i));
+		h1.maxHeapify(arr1,2);
+		h1.printArray(arr1);
+		System.out.println();
+		
+		int[] arr2 = {0,4,1,3,2,16,9,10,14,8,7};
+		Heap h2 = new Heap(arr2.length);
+		h2.buildMaxHeap(arr2);
+		h2.printArray(arr2);
+		System.out.println();
+		
+		h2.heapSort(arr2);
+		h2.printArray(arr2);
+		
 	}
 }
