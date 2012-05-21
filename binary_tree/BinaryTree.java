@@ -50,7 +50,13 @@ public class BinaryTree{
 		A walk in which each parent node is traversed before its children is called a pre-order walk
 	*/
 	private static void get_pre_order(Node node){
-		//TODO
+		System.out.print(node.value+" ");
+		if (node.left != null){
+			get_pre_order(node.left);
+		}
+		if (node.right != null){
+			get_pre_order(node.right);
+		}
 	}
 	
 	// return the depth of the tree
